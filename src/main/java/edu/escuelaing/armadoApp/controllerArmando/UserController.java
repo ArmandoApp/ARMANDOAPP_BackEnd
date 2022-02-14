@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import edu.escuelaing.armadoApp.data.AuthenticationRequest;
 import edu.escuelaing.armadoApp.data.BaseResponse;
+import edu.escuelaing.armadoApp.dto.UserDto;
 import edu.escuelaing.armadoApp.service.ArmandoAppException;
 import edu.escuelaing.armadoApp.service.IArmandoAppService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,10 @@ public class UserController {
     }
 
     @PostMapping("/createUser")
-    private ResponseEntity<?> registrarUsuario(@RequestBody AuthenticationRequest authenticationRequest) {
+    private ResponseEntity<?> registrarUsuario(@RequestBody UserDto userDto) {
         try {
-            service.createUser(authenticationRequest);
-            return new ResponseEntity<>("Usuario " + authenticationRequest.getUsername() + " creado correctamente",
-                    HttpStatus.CREATED);
+            service.createUser(userDto);
+            return new ResponseEntity<>("Usuario " + userDto.getUserName() + " creado correctamente", HttpStatus.CREATED);
         } catch (ArmandoAppException e) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

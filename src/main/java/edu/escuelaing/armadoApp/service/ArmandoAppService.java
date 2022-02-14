@@ -4,6 +4,7 @@ package edu.escuelaing.armadoApp.service;
 
 import edu.escuelaing.armadoApp.data.AuthenticationRequest;
 import edu.escuelaing.armadoApp.data.UserModel;
+import edu.escuelaing.armadoApp.dto.UserDto;
 import edu.escuelaing.armadoApp.repository.UserRepository;
 import edu.escuelaing.armadoApp.security.JwtUtils;
 import edu.escuelaing.armadoApp.security.UserService;
@@ -28,16 +29,11 @@ public class ArmandoAppService implements IArmandoAppService{
     private JwtUtils jwtUtils;
 
     @Override
-    public void createUser(AuthenticationRequest authenticationRequest) throws ArmandoAppException {
-        String username = authenticationRequest.getUsername();
-        String password = authenticationRequest.getPassword();
-        UserModel userModel = new UserModel();
-        userModel.setUsername(username);
-        userModel.setPassword(password);
+    public void createUser(UserDto userDto) throws ArmandoAppException {
 
-        if (userRepository.findByUsername(username) == null)
+        if (userRepository.findByUsername(userDto.getUserName()) == null)
             try {
-                userRepository.save(userModel);
+                userRepository.save(new UserModel(userDto));
             } catch (Exception e) {
                 throw new ArmandoAppException("No se pudo guardar un usuario");
             }

@@ -1,5 +1,6 @@
 package edu.escuelaing.armadoApp.data;
 
+import edu.escuelaing.armadoApp.dto.UserDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +15,16 @@ public class UserModel {
 
     private String password;
 
+
     public UserModel() {
+
+    }
+
+    public UserModel(UserDto userDto) {
+
+        this.username = userDto.getUserName();
+        this.password = userDto.getPassword();
+
     }
 
     public String getId() {
@@ -25,8 +35,8 @@ public class UserModel {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getPassword() {
