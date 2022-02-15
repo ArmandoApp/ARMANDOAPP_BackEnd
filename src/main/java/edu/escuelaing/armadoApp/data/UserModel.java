@@ -15,6 +15,10 @@ public class UserModel {
 
     private String password;
 
+    private String role;
+
+    private String category;
+
 
     public UserModel() {
 
@@ -24,7 +28,25 @@ public class UserModel {
 
         this.username = userDto.getUserName();
         this.password = userDto.getPassword();
+        this.role = userDto.getRole();
+        this.category = userDto.getCategory();
 
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getId() {

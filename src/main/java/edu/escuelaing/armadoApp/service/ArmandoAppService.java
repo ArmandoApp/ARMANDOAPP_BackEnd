@@ -3,8 +3,10 @@ package edu.escuelaing.armadoApp.service;
 
 
 import edu.escuelaing.armadoApp.data.AuthenticationRequest;
+import edu.escuelaing.armadoApp.data.Type;
 import edu.escuelaing.armadoApp.data.UserModel;
 import edu.escuelaing.armadoApp.dto.UserDto;
+import edu.escuelaing.armadoApp.repository.TypesRepository;
 import edu.escuelaing.armadoApp.repository.UserRepository;
 import edu.escuelaing.armadoApp.security.JwtUtils;
 import edu.escuelaing.armadoApp.security.UserService;
@@ -17,6 +19,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Objects;
+
 @Service
 public class ArmandoAppService implements IArmandoAppService{
     @Autowired
@@ -27,12 +32,15 @@ public class ArmandoAppService implements IArmandoAppService{
     private UserService userService;
     @Autowired
     private JwtUtils jwtUtils;
+    @Autowired
+    private TypesRepository typesRepository;
 
     @Override
     public void createUser(UserDto userDto) throws ArmandoAppException {
 
         if (userRepository.findByUsername(userDto.getUserName()) == null)
             try {
+                System.out.println(userDto.getCategory());
                 userRepository.save(new UserModel(userDto));
             } catch (Exception e) {
                 throw new ArmandoAppException("No se pudo guardar un usuario");
@@ -55,5 +63,15 @@ public class ArmandoAppService implements IArmandoAppService{
         UserDetails loadedUser = userService.loadUserByUsername(username);
 
         return jwtUtils.generateToken(loadedUser);
+    }
+
+    @Override
+    public List<Type> getTypes() {
+        return typesRepository.findAll();
+    }
+
+    @Override
+    public List<UserModel> getUserModel(String category) {
+        return userRepository.findUserModelByCategory(category);
     }
 }

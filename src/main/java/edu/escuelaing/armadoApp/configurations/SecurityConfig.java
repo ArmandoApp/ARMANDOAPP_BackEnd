@@ -36,13 +36,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-resources/**",
             "/swagger-ui.html",
             "/v2/api-docs",
-            "/webjars/**"
+            "/webjars/**",
+            "/v1/Armando/Categorias/showCategories",
+            "/v1/Armando/createUser",
+            "/v1/Armando/Categorias/getCategories/{category}"
+
     };
 
     private static final String[] AUTH_ENDPOINTS = {
             "/createUser",
             "/login",
-            "/connectSocket/**"
+            "/connectSocket/**",
+            "/showCategories",
+            "/getCategories/Categorias/{category}"
     };
 
     @Override
