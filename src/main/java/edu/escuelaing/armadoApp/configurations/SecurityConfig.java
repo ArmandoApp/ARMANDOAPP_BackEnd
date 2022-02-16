@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/webjars/**",
             "/v1/Armando/Categorias/showCategories",
             "/v1/Armando/createUser",
+            "/v1/Armando/sala",
             "/v1/Armando/Categorias/getCategories/{category}"
 
     };

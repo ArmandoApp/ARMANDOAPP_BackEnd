@@ -1,10 +1,12 @@
 package edu.escuelaing.armadoApp.controllerArmando;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.escuelaing.armadoApp.data.AuthenticationRequest;
 import edu.escuelaing.armadoApp.data.BaseResponse;
+import edu.escuelaing.armadoApp.data.UserModel;
 import edu.escuelaing.armadoApp.dto.UserDto;
 import edu.escuelaing.armadoApp.service.ArmandoAppException;
 import edu.escuelaing.armadoApp.service.IArmandoAppService;
@@ -48,4 +50,9 @@ public class UserController {
         }
     }
 
+   /* @PostMapping("/chooseWorker/{worker}")
+    private ResponseEntity<List<UserModel>> getWorker(@PathVariable String worker){
+
+    }
+    */
 }
