@@ -1,6 +1,7 @@
 package edu.escuelaing.armadoApp.data;
 
 public class ChatModel {
+
     private String user;
     private String employee;
     private String chat;

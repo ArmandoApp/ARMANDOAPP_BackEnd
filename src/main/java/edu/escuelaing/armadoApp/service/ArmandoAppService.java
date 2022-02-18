@@ -23,10 +23,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import sun.text.normalizer.ICUBinary;
+
 
 import java.util.List;
-import java.util.Objects;
+
 import java.util.Optional;
 
 @Service
@@ -43,8 +43,8 @@ public class ArmandoAppService implements IArmandoAppService{
     private TypesRepository typesRepository;
     @Autowired
     private SalaRepository salaRepository;
-    @Autowired
-    private ICacheRedis cache;
+    //@Autowired
+    //private ICacheRedis cache;
 
     @Override
     public void createUser(UserDto userDto) throws ArmandoAppException {
@@ -102,11 +102,10 @@ public class ArmandoAppService implements IArmandoAppService{
             UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             UserModel user = userRepository.findByUsername(userDetails.getUsername());
             if(sala.getUsersId().contains(user.getId())) throw new ArmandoAppException("Usuario ya esta en sala");
-            cache.incrementUsers(idSala);
+            //cache.incrementUsers(idSala);
             sala.getUsersId().add(user.getId());
             salaRepository.save(sala);
             return ("Usuario agregado correctamente");
-
 
         }else{
             throw new ArmandoAppException("Sala no existe");

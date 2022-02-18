@@ -40,7 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/v1/Armando/Categorias/showCategories",
             "/v1/Armando/createUser",
             "/v1/Armando/sala",
-            "/v1/Armando/Categorias/getCategories/{category}"
+            "/v1/Armando/Categorias/getCategories/{category}",
+            "/login",
+            "/v1/Armando/sala/user/{idSala}"
 
     };
 
@@ -49,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/login",
             "/connectSocket/**",
             "/showCategories",
-            "/getCategories/Categorias/{category}"
+            "/getCategories/Categorias/{category}",
+            "/user/{idSala}"
     };
 
     @Override

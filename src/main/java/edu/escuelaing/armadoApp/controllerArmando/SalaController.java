@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/v1/Armando/sala")
+
 public class SalaController {
     @Autowired
     private IArmandoAppService service;
