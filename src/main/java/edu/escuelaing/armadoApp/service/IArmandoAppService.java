@@ -16,4 +16,8 @@ public interface IArmandoAppService {
 
     List<UserModel> getUserModel(String category);
 
+    public String createSala();
+
+    public String addUserSala(String idSala) throws ArmandoAppException;
+
 }
