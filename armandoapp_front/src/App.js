@@ -1,6 +1,7 @@
 import './styles/Ofertantes.css'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Ofertantes from './components/ofertantes'
+import Ofertantes from './components/ofertantes';
+import Conection from './components/conection';
 
 function App() {
   return (
@@ -10,8 +11,10 @@ function App() {
           <Routes>
 
             <Route path='/ofertantes' element={<Ofertantes/>}></Route>
-
-          </Routes>
+        </Routes>
+        <Routes>
+          <Route path='/lista' element={<Conection />}></Route>
+        </Routes>
       </div>
     </Router>
   );
