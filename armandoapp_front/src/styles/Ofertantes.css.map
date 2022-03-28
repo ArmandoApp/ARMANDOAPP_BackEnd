@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACH,gBAAgB,EAAE,aAAa;CAChC;;AAED,AAAA,IAAI,CAAA;EAEF,KAAK,EAAE,MAET;CAAC",
+    "sources": [
+        "Ofertantes.scss"
+    ],
+    "names": [],
+    "file": "Ofertantes.css"
+}
