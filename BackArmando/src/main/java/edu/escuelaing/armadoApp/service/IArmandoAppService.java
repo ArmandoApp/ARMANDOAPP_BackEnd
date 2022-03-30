@@ -20,4 +20,6 @@ public interface IArmandoAppService {
 
     public String addUserSala(String idSala) throws ArmandoAppException;
 
+    UserModel findUser(String name);
+
 }

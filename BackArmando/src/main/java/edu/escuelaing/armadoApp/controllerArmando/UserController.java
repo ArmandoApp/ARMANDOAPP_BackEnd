@@ -28,6 +28,11 @@ public class UserController {
         return "Welcome to the Dashboard" + SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
+    @GetMapping("/findUser/{name}")
+    private ResponseEntity<?> findUser(@PathVariable String name){
+        return new ResponseEntity<>(service.findUser(name), HttpStatus.ACCEPTED);
+    }
+
     @PostMapping("/createUser")
     private ResponseEntity<?> registrarUsuario(@RequestBody UserDto userDto) {
         try {

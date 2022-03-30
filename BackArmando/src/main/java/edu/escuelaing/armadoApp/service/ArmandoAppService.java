@@ -1,8 +1,6 @@
 package edu.escuelaing.armadoApp.service;
 
 
-
-import edu.escuelaing.armadoApp.cache.ICacheRedis;
 import edu.escuelaing.armadoApp.data.AuthenticationRequest;
 import edu.escuelaing.armadoApp.data.SalaModel;
 import edu.escuelaing.armadoApp.data.Type;
@@ -61,6 +59,8 @@ public class ArmandoAppService implements IArmandoAppService{
         }
     }
 
+
+
     @Override
     public String login(AuthenticationRequest authenticationRequest) throws ArmandoAppException {
         String username = authenticationRequest.getUsername();
@@ -110,5 +110,10 @@ public class ArmandoAppService implements IArmandoAppService{
         }else{
             throw new ArmandoAppException("Sala no existe");
         }
+    }
+
+    @Override
+    public UserModel findUser(String name) {
+        return userRepository.findByUsername(name);
     }
 }
